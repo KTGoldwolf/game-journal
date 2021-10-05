@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/ArimoHeader.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/GameTitle.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/simple/SimpleGameName.gd" type="Script" id=3]
+
+[node name="SimpleGameName" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameNameContainer" type="VBoxContainer" parent="."]
+margin_left = 177.0
+margin_top = 263.0
+margin_right = 422.0
+margin_bottom = 337.0
+
+[node name="GameNameLabel" type="Label" parent="GameNameContainer"]
+margin_right = 245.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 2 )
+text = "GAME NAME"
+
+[node name="GameStudioLabel" type="Label" parent="GameNameContainer"]
+margin_top = 50.0
+margin_right = 245.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 1 )
+text = "GAME STUDIO"

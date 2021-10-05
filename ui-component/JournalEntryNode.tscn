@@ -1,0 +1,177 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fonts/ArimoHeader.tres" type="DynamicFont" id=1]
+[ext_resource path="res://themes/game-journal-theme.tres" type="Theme" id=2]
+[ext_resource path="res://fonts/ArimoTag.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/ArimoBy.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/ArimoNotes.tres" type="DynamicFont" id=5]
+[ext_resource path="res://fonts/GameTitle.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scripts/JournalEntryNode.gd" type="Script" id=7]
+
+[node name="JournalEntryNode" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -80.0
+margin_bottom = -294.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 2 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_top = 50.0
+margin_right = 520.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeaderBar" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 520.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DateAndTimeSection" type="HBoxContainer" parent="VBoxContainer/HeaderBar"]
+margin_right = 185.0
+margin_bottom = 24.0
+grow_horizontal = 2
+
+[node name="Date" type="Label" parent="VBoxContainer/HeaderBar/DateAndTimeSection"]
+margin_right = 100.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "10/03/2021"
+
+[node name="DatePlaytimeDivider" type="Label" parent="VBoxContainer/HeaderBar/DateAndTimeSection"]
+margin_left = 104.0
+margin_right = 111.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "-"
+
+[node name="Playtime" type="Label" parent="VBoxContainer/HeaderBar/DateAndTimeSection"]
+margin_left = 115.0
+margin_right = 185.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "2 Hours"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlSection" type="HBoxContainer" parent="VBoxContainer/HeaderBar"]
+margin_left = 189.0
+margin_right = 219.0
+margin_bottom = 24.0
+grow_horizontal = 2
+
+[node name="TextureButton" type="Button" parent="VBoxContainer/HeaderBar/ControlSection"]
+margin_right = 30.0
+margin_bottom = 24.0
+text = "Tag"
+
+[node name="GameNameBar" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 520.0
+margin_bottom = 74.0
+
+[node name="GameNameLabel" type="Label" parent="VBoxContainer/GameNameBar"]
+margin_right = 411.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 6 )
+text = "Dogs Organized Neatly"
+
+[node name="Tags" type="HBoxContainer" parent="VBoxContainer/GameNameBar"]
+margin_left = 415.0
+margin_right = 520.0
+margin_bottom = 46.0
+
+[node name="GenreTag" type="CenterContainer" parent="VBoxContainer/GameNameBar/Tags"]
+margin_right = 59.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/GameNameBar/Tags/GenreTag"]
+margin_left = 29.0
+margin_top = 23.0
+margin_right = 29.0
+margin_bottom = 23.0
+color = Color( 0.545098, 0.0431373, 0.0431373, 1 )
+
+[node name="TagText" type="Label" parent="VBoxContainer/GameNameBar/Tags/GenreTag"]
+margin_top = 11.0
+margin_right = 59.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 3 )
+text = "Puzzle"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GenreTag2" type="CenterContainer" parent="VBoxContainer/GameNameBar/Tags"]
+margin_left = 63.0
+margin_right = 105.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/GameNameBar/Tags/GenreTag2"]
+margin_left = 21.0
+margin_top = 23.0
+margin_right = 21.0
+margin_bottom = 23.0
+color = Color( 0.545098, 0.0431373, 0.0431373, 1 )
+
+[node name="TagText" type="Label" parent="VBoxContainer/GameNameBar/Tags/GenreTag2"]
+margin_top = 11.0
+margin_right = 42.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 3 )
+text = "Cute"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StudioNameBar" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 78.0
+margin_right = 520.0
+margin_bottom = 102.0
+
+[node name="ByLabel" type="Label" parent="VBoxContainer/StudioNameBar"]
+margin_right = 21.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 4 )
+text = "by"
+
+[node name="StudioName" type="Label" parent="VBoxContainer/StudioNameBar"]
+margin_left = 25.0
+margin_right = 131.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 4 )
+text = "Double Fine"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 106.0
+margin_right = 520.0
+margin_bottom = 206.0
+rect_min_size = Vector2( 0, 100 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "A cute and simple puzzle tangram game. The game play isn't anything special, but the cute dogs that are the play pieces with their limited animations make it quite charming. 
+
+Only the very last puzzle in the demo was challenging. I finished the whole demo in about 10 minutes. But that feels right for a game that is going to be about $3."
+text = "A cute and simple puzzle tangram game. The game play isn't anything special, but the cute dogs that are the play pieces with their limited animations make it quite charming. 
+
+Only the very last puzzle in the demo was challenging. I finished the whole demo in about 10 minutes. But that feels right for a game that is going to be about $3."

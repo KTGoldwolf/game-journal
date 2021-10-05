@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui-component/JournalEntryNode.tscn" type="PackedScene" id=1]
+
+[node name="JournalEntryList" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 520.0
+margin_bottom = 900.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+margin_right = 520.0
+margin_bottom = 20.0
+text = "Add New Entry"
+
+[node name="GameEntries" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 40.0
+margin_right = 520.0
+margin_bottom = 900.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameEntry" parent="ScrollContainer/VBoxContainer/GameEntries" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 520.0
+margin_bottom = 206.0
+
+[node name="VBoxContainer" parent="ScrollContainer/VBoxContainer/GameEntries/GameEntry" index="0"]
+margin_top = 0.0
+margin_bottom = 206.0
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/GameEntries"]
+margin_top = 210.0
+margin_right = 520.0
+margin_bottom = 214.0
+
+[node name="GameEntry2" parent="ScrollContainer/VBoxContainer/GameEntries" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 218.0
+margin_right = 520.0
+margin_bottom = 424.0
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/GameEntries"]
+margin_top = 428.0
+margin_right = 520.0
+margin_bottom = 432.0
+
+[node name="GameEntry3" parent="ScrollContainer/VBoxContainer/GameEntries" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 436.0
+margin_right = 520.0
+margin_bottom = 642.0
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer/GameEntries"]
+margin_top = 646.0
+margin_right = 520.0
+margin_bottom = 650.0
+
+[node name="GameEntry4" parent="ScrollContainer/VBoxContainer/GameEntries" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 654.0
+margin_right = 520.0
+margin_bottom = 860.0
+
+[editable path="ScrollContainer/VBoxContainer/GameEntries/GameEntry"]

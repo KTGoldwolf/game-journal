@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fonts/ButtonFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/simple/SimpleGameList.gd" type="Script" id=2]
+[ext_resource path="res://fonts/ArimoHeader.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scripts/simple/AddGamePopup.gd" type="Script" id=4]
+
+[sub_resource type="InputEventAction" id=3]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 3 )
+
+[node name="SimpleGameList" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddGameButton" type="Button" parent="CenterContainer"]
+margin_right = 600.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "ADD A GAME"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer"]
+margin_top = 23.0
+margin_right = 600.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+
+[node name="GameNameListContainer" type="VBoxContainer" parent="CenterContainer/ScrollContainer"]
+
+[node name="AddGamePopup" type="PopupDialog" parent="."]
+visible = true
+anchor_right = 1.0
+margin_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+popup_exclusive = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AddGamePopup"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 520.0
+margin_bottom = 68.0
+size_flags_horizontal = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AddGamePopup/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 3 )
+text = "Add a New Entry"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AddGamePopup/VBoxContainer"]
+margin_top = 28.0
+margin_right = 500.0
+margin_bottom = 52.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGameNameInput" type="LineEdit" parent="AddGamePopup/VBoxContainer/HBoxContainer"]
+margin_right = 413.0
+margin_bottom = 24.0
+grow_vertical = 0
+size_flags_horizontal = 3
+placeholder_text = "Enter a game name"
+caret_blink = true
+
+[node name="NewGameButton" type="Button" parent="AddGamePopup/VBoxContainer/HBoxContainer"]
+margin_left = 417.0
+margin_right = 500.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+shortcut = SubResource( 2 )
+text = "Add"
+
+[connection signal="pressed" from="CenterContainer/AddGameButton" to="." method="_on_AddGameButton_pressed"]
+[connection signal="pressed" from="AddGamePopup/VBoxContainer/HBoxContainer/NewGameButton" to="AddGamePopup" method="_on_NewGameButton_pressed"]
