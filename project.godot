@@ -39,7 +39,12 @@ _global_script_class_icons={
 [application]
 
 config/name="game-journal"
+run/main_scene="res://ui-component/simple/SimpleGameList.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameStore="*res://scripts/GameStore.gd"
 
 [display]
 

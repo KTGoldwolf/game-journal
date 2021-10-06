@@ -1,15 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/ButtonFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/simple/SimpleGameList.gd" type="Script" id=2]
 [ext_resource path="res://fonts/ArimoHeader.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scripts/simple/AddGamePopup.gd" type="Script" id=4]
+[ext_resource path="res://scripts/AddGameStorePopup.gd" type="Script" id=5]
 
-[sub_resource type="InputEventAction" id=3]
+[sub_resource type="InputEventAction" id=1]
 action = "ui_accept"
 
 [sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 3 )
+shortcut = SubResource( 1 )
 
 [node name="SimpleGameList" type="Control"]
 anchor_right = 1.0
@@ -26,14 +27,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AddGameButton" type="Button" parent="CenterContainer"]
+[node name="AddGameToGameStoreButton" type="Button" parent="CenterContainer"]
 margin_right = 600.0
 margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "ADD A GAME TO THE GAME LIST"
+
+[node name="AddGameButton" type="Button" parent="CenterContainer"]
+margin_top = 23.0
+margin_right = 600.0
+margin_bottom = 42.0
 custom_fonts/font = ExtResource( 1 )
 text = "ADD A GAME"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer"]
-margin_top = 23.0
+margin_top = 46.0
 margin_right = 600.0
 margin_bottom = 600.0
 size_flags_vertical = 3
@@ -41,7 +49,6 @@ size_flags_vertical = 3
 [node name="GameNameListContainer" type="VBoxContainer" parent="CenterContainer/ScrollContainer"]
 
 [node name="AddGamePopup" type="PopupDialog" parent="."]
-visible = true
 anchor_right = 1.0
 margin_bottom = 100.0
 grow_horizontal = 2
@@ -68,10 +75,18 @@ margin_bottom = 24.0
 custom_fonts/font = ExtResource( 3 )
 text = "Add a New Entry"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AddGamePopup/VBoxContainer"]
+[node name="GameOptionsInput" type="OptionButton" parent="AddGamePopup/VBoxContainer"]
 margin_top = 28.0
 margin_right = 500.0
-margin_bottom = 52.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AddGamePopup/VBoxContainer"]
+margin_top = 52.0
+margin_right = 500.0
+margin_bottom = 76.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -93,5 +108,62 @@ size_flags_stretch_ratio = 0.2
 shortcut = SubResource( 2 )
 text = "Add"
 
+[node name="AddGameStorePopup" type="PopupDialog" parent="."]
+anchor_right = 1.0
+margin_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+popup_exclusive = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AddGameStorePopup"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 520.0
+margin_bottom = 68.0
+size_flags_horizontal = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AddGameStorePopup/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 3 )
+text = "Add a New Entry to the Game Store"
+
+[node name="GameStoreNameInput" type="LineEdit" parent="AddGameStorePopup/VBoxContainer"]
+margin_top = 28.0
+margin_right = 500.0
+margin_bottom = 52.0
+grow_vertical = 0
+size_flags_horizontal = 3
+placeholder_text = "Enter a game name"
+caret_blink = true
+
+[node name="GameStoreStudioInput" type="LineEdit" parent="AddGameStorePopup/VBoxContainer"]
+margin_top = 56.0
+margin_right = 500.0
+margin_bottom = 80.0
+grow_vertical = 0
+size_flags_horizontal = 3
+placeholder_text = "Enter the creator's name"
+caret_blink = true
+
+[node name="NewGameButton" type="Button" parent="AddGameStorePopup/VBoxContainer"]
+margin_top = 84.0
+margin_right = 500.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+shortcut = SubResource( 2 )
+text = "Add to Game Store"
+
+[connection signal="pressed" from="CenterContainer/AddGameToGameStoreButton" to="." method="_on_AddGameToGameStoreButton_pressed"]
 [connection signal="pressed" from="CenterContainer/AddGameButton" to="." method="_on_AddGameButton_pressed"]
 [connection signal="pressed" from="AddGamePopup/VBoxContainer/HBoxContainer/NewGameButton" to="AddGamePopup" method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="AddGameStorePopup/VBoxContainer/NewGameButton" to="AddGameStorePopup" method="_on_NewGameButton_pressed"]
