@@ -14,6 +14,12 @@ func _on_NewGameButton_pressed() -> void:
 		if newGameStudioInput.text != "":
 			var newGame = Game.new(newGameNameInput.text, newGameStudioInput.text)
 			emit_signal("AddGameToStore", newGame)
-			newGameNameInput.text = ""
-			newGameStudioInput.text = ""
-			hide()
+			clear()
+
+func _on_CancelButton_pressed() -> void:
+	clear()
+
+func clear() -> void:
+	newGameNameInput.text = ""
+	newGameStudioInput.text = ""
+	hide()

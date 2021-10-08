@@ -1,7 +1,7 @@
 extends Control
 
 export var SimpleGameName : PackedScene = preload("res://ui-component/simple/SimpleGameName.tscn")
-onready var addGamePopup = $AddGamePopup
+onready var addGamePopup = $AddGameNotesPopup
 onready var addGameStorePopup = $AddGameStorePopup
 onready var gameNameListContainer = $CenterContainer/ScrollContainer/GameNameListContainer
 
