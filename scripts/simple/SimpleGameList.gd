@@ -15,7 +15,7 @@ func addNewGame(newGameName) -> void:
 	gameNameListContainer.add_child(newGame)
 	
 func addNewGameToStore(newGame) -> void:
-	GameStore.addGame(newGame)
+	GameStoreText.addGame(newGame)
 
 func _on_AddGameButton_pressed() -> void:
 	addGamePopup.popup_centered()

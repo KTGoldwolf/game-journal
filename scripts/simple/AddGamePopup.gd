@@ -12,7 +12,7 @@ func _ready() -> void:
 # called immediately before the popup is rendered
 # refresh the gamelist to the latest
 func onShow() -> void:
-	var gameList = GameStore.getGameList()
+	var gameList = GameStoreText.getGameList()
 	print(gameList)
 	for game in gameList:
 		gameOptions.add_item(game.gameName + "-" + game.studioName)
