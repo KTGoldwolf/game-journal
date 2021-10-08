@@ -12,19 +12,23 @@ func _ready() -> void:
 # called immediately before the popup is rendered
 # refresh the gamelist to the latest
 func onShow() -> void:
+	clearForm()
 	var gameList = GameStoreText.getGameList()
 	print(gameList)
 	for game in gameList:
-		gameOptions.add_item(game.gameName + "-" + game.studioName)
+		gameOptions.add_item(game.gameName + " - " + game.studioName)
 
 func _on_NewGameButton_pressed() -> void:
 	# todo: Implement saving notes
 	emit_signal("AddGameEntry", noteInput.text)
-	clear()
+	resetForm()
 
 func _on_Cancel_pressed() -> void:
-	clear()
+	resetForm()
 
-func clear() -> void:
-	noteInput.text = ""
+func resetForm() -> void:
+	clearForm()
 	hide()
+
+func clearForm() -> void:
+	noteInput.text = ""
