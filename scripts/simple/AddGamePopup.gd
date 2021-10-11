@@ -1,6 +1,6 @@
 extends PopupDialog
 
-signal AddGameEntry(gameName)
+signal AddPlaytimeEntry(game, noteText)
 
 onready var newEntryButton = $VBoxContainer/AddEntryButton
 onready var noteInput : TextEdit = $VBoxContainer/Notes
@@ -16,11 +16,16 @@ func onShow() -> void:
 	var gameList = GameStoreText.getGameList()
 	print(gameList)
 	for game in gameList:
-		gameOptions.add_item(game.gameName + " - " + game.studioName)
+		var newIndex = gameOptions.get_item_count()
+		print(newIndex)
+		var newGameItem = game.gameName + " - " + game.studioName
+		gameOptions.add_item(newGameItem, newIndex)
+		gameOptions.set_item_metadata(newIndex, game)
+		print(gameOptions.get_item_metadata(newIndex))
 
 func _on_NewGameButton_pressed() -> void:
-	# todo: Implement saving notes
-	emit_signal("AddGameEntry", noteInput.text)
+	var selectedId = gameOptions.get_selected_id()
+	emit_signal("AddPlaytimeEntry", gameOptions.get_item_metadata(selectedId), noteInput.text)
 	resetForm()
 
 func _on_Cancel_pressed() -> void:
@@ -32,3 +37,4 @@ func resetForm() -> void:
 
 func clearForm() -> void:
 	noteInput.text = ""
+	gameOptions.clear()

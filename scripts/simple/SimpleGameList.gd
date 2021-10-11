@@ -1,18 +1,18 @@
 extends Control
 
-export var SimpleGameName : PackedScene = preload("res://ui-component/simple/SimpleGameName.tscn")
+export var GameEntryScene : PackedScene = preload("res://ui-component/simple/SimpleGameEntry.tscn")
 onready var addGamePopup = $AddGameNotesPopup
 onready var addGameStorePopup = $AddGameStorePopup
-onready var gameNameListContainer = $CenterContainer/ScrollContainer/GameNameListContainer
+onready var playtimeEntryListContainer = $CenterContainer/ScrollContainer/PlaytimeEntryListContainer
 
 func _ready() -> void:
-	addGamePopup.connect("AddGameEntry", self, "addNewGame")
+	addGamePopup.connect("AddPlaytimeEntry", self, "addNewPlaytimeEntry")
 	addGameStorePopup.connect("AddGameToStore", self, "addNewGameToStore")
 
-func addNewGame(newGameName) -> void:
-	var newGame = SimpleGameName.instance()
-	newGame.initData(newGameName)
-	gameNameListContainer.add_child(newGame)
+func addNewPlaytimeEntry(game, noteText) -> void:
+	var gameEntryScene = GameEntryScene.instance()
+	gameEntryScene.initData(game, noteText)
+	playtimeEntryListContainer.add_child(gameEntryScene)
 	
 func addNewGameToStore(newGame) -> void:
 	GameStoreText.addGame(newGame)
