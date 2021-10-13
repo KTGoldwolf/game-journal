@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/simple/SimpleGameEntry.gd" type="Script" id=1]
 [ext_resource path="res://fonts/GameTitle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fonts/ArimoHeader.tres" type="DynamicFont" id=3]
 [ext_resource path="res://themes/game-entry-notes-theme.tres" type="Theme" id=4]
+[ext_resource path="res://themes/style_box_clear.tres" type="StyleBox" id=5]
 
 [node name="SimpleGameEntry" type="VBoxContainer"]
 anchor_right = 1.0
@@ -37,6 +38,10 @@ margin_bottom = 178.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
 theme = ExtResource( 4 )
+custom_styles/read_only = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
 text = "Here's some demonstration text, text just for the sake of demonstration."
 readonly = true
+syntax_highlighting = true
 wrap_enabled = true
