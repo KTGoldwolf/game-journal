@@ -37,5 +37,6 @@ margin_bottom = 178.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
 theme = ExtResource( 4 )
+text = "Here's some demonstration text, text just for the sake of demonstration."
 readonly = true
 wrap_enabled = true
