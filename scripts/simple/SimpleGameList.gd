@@ -6,14 +6,22 @@ onready var addGameStorePopup = $AddGameStorePopup
 onready var playtimeEntryListContainer = $CenterContainer/ScrollContainer/PlaytimeEntryListContainer
 
 func _ready() -> void:
+	var journalEntryList = GameStoreText.getJournalEntryList()
+	for entry in journalEntryList:
+		addJournalEntryToUI(entry)
 	addGamePopup.connect("AddPlaytimeEntry", self, "addNewPlaytimeEntry")
 	addGameStorePopup.connect("AddGameToStore", self, "addNewGameToStore")
 
-func addNewPlaytimeEntry(game, noteText) -> void:
+func addNewPlaytimeEntry(game : Game, noteText : String) -> void:
+	var journalEntry = JournalEntry.new(game, noteText)
+	GameStoreText.addJournalEntry(journalEntry)
+	addJournalEntryToUI(journalEntry)
+
+func addJournalEntryToUI(entry : JournalEntry):
 	var gameEntryScene = GameEntryScene.instance()
-	gameEntryScene.initData(game, noteText)
+	gameEntryScene.initData(entry)
 	playtimeEntryListContainer.add_child(gameEntryScene)
-	
+
 func addNewGameToStore(newGame) -> void:
 	GameStoreText.addGame(newGame)
 

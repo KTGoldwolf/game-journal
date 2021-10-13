@@ -1,9 +1,24 @@
+class_name SimpleGameEntry
 extends Container
 
-func initData(game: Game, notes: String) -> void:
+var JournalEntry : JournalEntry
+
+func initData(journalEntry : JournalEntry) -> void:
+	JournalEntry = journalEntry
+	setupUi()
+
+func setupUi() -> void:
 	var gameNameLabel : Label = $GameNameContainer/GameNameLabel
-	gameNameLabel.text = game.gameName
+	gameNameLabel.text = JournalEntry.getGame().gameName
 	var gameStudioLabel : Label = $GameNameContainer/GameStudioLabel
-	gameStudioLabel.text = game.studioName
+	gameStudioLabel.text = JournalEntry.getGame().studioName
 	var noteText : TextEdit = $Notes
-	noteText.text = notes
+	noteText.text = JournalEntry.Notes
+
+func saveToFile(file: File) -> void:
+	#Store Game
+	file.store_line(var2str(JournalEntry.getGame().gameId.to_lower()))
+	file.store_line(var2str(JournalEntry.getGame().gameName))
+	file.store_line(var2str(JournalEntry.getGame().studioName))
+	#Store Notes
+	file.store_line(var2str(JournalEntry.Notes))

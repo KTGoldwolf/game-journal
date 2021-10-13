@@ -25,6 +25,16 @@ _global_script_classes=[ {
 "path": "res://scripts/GameEntryData.gd"
 }, {
 "base": "Reference",
+"class": "JournalEntry",
+"language": "GDScript",
+"path": "res://scripts/JournalEntry.gd"
+}, {
+"base": "Container",
+"class": "SimpleGameEntry",
+"language": "GDScript",
+"path": "res://scripts/simple/SimpleGameEntry.gd"
+}, {
+"base": "Reference",
 "class": "Tag",
 "language": "GDScript",
 "path": "res://scripts/Tag.gd"
@@ -33,6 +43,8 @@ _global_script_class_icons={
 "Date": "",
 "Game": "",
 "GameEntryData": "",
+"JournalEntry": "",
+"SimpleGameEntry": "",
 "Tag": ""
 }
 
